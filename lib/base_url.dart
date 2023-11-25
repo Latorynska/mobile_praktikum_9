@@ -11,4 +11,7 @@ class BaseURL {
 
   //Toruism Place
   static String urlTourismPlace = "${baseURL}tourism-place";
+
+  // http://192.168.100.215:3000/api/auth/register
+    // http://192.168.100.215:3000/api/auth/login
 }

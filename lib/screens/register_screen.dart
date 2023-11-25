@@ -149,7 +149,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
                                 KeyboardUtil.hideKeyboard(context);
-                                // _register();
+                                _register();
                               }
                             },
                           ),

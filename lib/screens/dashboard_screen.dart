@@ -15,7 +15,7 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    checkLoginStatus(context);
+    // checkLoginStatus(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: const ButtonNavBar(selectedMenu: MenuState.home),

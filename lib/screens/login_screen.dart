@@ -39,56 +39,47 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _login() async {
-    // try {
-    //   final user = await AuthService().login(email!, password!);
+    try {
+      final result = await AuthService().login(email!, password!);
+      print(result['success']);
+      if (result['success']) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SuccessScreen(
+                    text: 'Login Success',
+                    press: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DashboardScreen()),
+                        (route) => false,
+                      );
+                    },
+                  )),
+          (route) => false,
+        );
+      } else {
+        setState(() {
+          _error = result['message'];
+        });
+      }
+    } catch (e) {
+      setState(() {
+        _error = 'Login Failed';
+      });
+    }
 
-    //   if (user.email.isNotEmpty) {
-    //     setState(() {
-    //       _error = '';
-    //     });
-
-    //     // Simpan data pengguna ke SharedPreferences
-    //     final prefs = await SessionManager.getInstance();
-    //     await prefs.saveUserData(user.email);
-
-    //     Navigator.pushAndRemoveUntil(
-    //       context,
-    //       MaterialPageRoute(
-    //           builder: (context) => SuccessScreen(
-    //                 text: 'Login Success',
-    //                 press: () {
-    //                   Navigator.pushAndRemoveUntil(
-    //                     context,
-    //                     MaterialPageRoute(
-    //                         builder: (context) => const DashboardScreen()),
-    //                     (route) => false,
-    //                   );
-    //                 },
-    //               )),
-    //       (route) => false,
-    //     );
-    //   } else {
-    //     setState(() {
-    //       _error = 'Wrong Email or Password';
-    //     });
-    //   }
-    // } catch (e) {
-    //   print(e);
-    //   setState(() {
-    //     _error = 'Login Failed';
-    //   });
-    // }
-
-    // if (_error.isNotEmpty) {
-    //   CustomSnackbar.show(
-    //     scaffoldMessengerKey.currentState!,
-    //     _error,
-    //     SnackbarType.error,
-    //   );
-    //   setState(() {
-    //     _error = '';
-    //   });
-    // }
+    if (_error.isNotEmpty) {
+      CustomSnackbar.show(
+        scaffoldMessengerKey.currentState!,
+        _error,
+        SnackbarType.error,
+      );
+      setState(() {
+        _error = '';
+      });
+    }
   }
 
   void addError({String? error}) {

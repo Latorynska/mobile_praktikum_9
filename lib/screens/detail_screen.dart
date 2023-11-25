@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wisata_app/constants.dart';
 import 'package:wisata_app/models/tourism_place.dart';
-import 'package:wisata_app/utils/contants.dart';
 
 var informationTextStyle = const TextStyle(fontFamily: 'Oxygen');
 

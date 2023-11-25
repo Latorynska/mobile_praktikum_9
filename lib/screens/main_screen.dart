@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wisata_app/constants.dart';
 import 'package:wisata_app/models/tourism_place.dart';
 import 'package:wisata_app/screens/detail_screen.dart';
-import 'package:wisata_app/utils/contants.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);

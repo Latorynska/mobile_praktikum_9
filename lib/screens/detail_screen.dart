@@ -18,7 +18,7 @@ class DetailScreen extends StatelessWidget {
           children: <Widget>[
             Stack(
               children: <Widget>[
-                Image.asset(place.imageAsset),
+                Image.network(place.image),
                 SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -85,7 +85,7 @@ class DetailScreen extends StatelessWidget {
                       const Icon(Icons.monetization_on),
                       const SizedBox(height: 8.0),
                       Text(
-                        place.ticketPrice,
+                        place.ticketPrice.toString(),
                         style: informationTextStyle,
                       ),
                     ],
@@ -108,7 +108,7 @@ class DetailScreen extends StatelessWidget {
               height: 150,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: place.imageUrls.map((url) {
+                children: place.urlImages.map((url) {
                   return Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
